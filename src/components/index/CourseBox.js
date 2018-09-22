@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { italic } from 'ansi-colors';
 
 const Wrapper = styled.div`
     height: 356px;

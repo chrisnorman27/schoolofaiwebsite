@@ -4,6 +4,7 @@ import Shape2 from '../../assets/Shape2.png';
 import CloneTitle from './CloneTitle';
 import CourseBox from './CourseBox';
 import BgImg from '../../assets/Siraj-background-image.png';
+import { StaticQuery, graphql } from 'gatsby';
 
 const AvailableCoursesContainer = styled.div`
     height: 373px;
@@ -34,35 +35,47 @@ const CoursesList = styled.div`
     flex-direction: row;
 `;
 
-class Courses extends React.Component {
-    render() {
-        return (
-            <>
-                <AvailableCoursesContainer>
-                    <CloneTitle text={'Available Courses'} />
-                </AvailableCoursesContainer>
-                <PopularCoursesContainer>
-                    <PopularCoursesTitle>Popular Courses</PopularCoursesTitle>
-                    <CoursesList>
-                        <CourseBox
-                            thumbnail={BgImg}
-                            author={'hello@sirajraval.com'}
-                            title={'Decentralized Applications'}
-                            price={'Free'}
-                            students={'3050'}
-                        />
-                        <CourseBox
-                            thumbnail={BgImg}
-                            author={'hello@sirajraval.com'}
-                            title={'Decentralized Applications'}
-                            price={'Free'}
-                            students={'3050'}
-                        />
-                    </CoursesList>
-                </PopularCoursesContainer>
-            </>
-        );
-    }
-}
+const Courses = ({ data }) => (
+    <>
+        <AvailableCoursesContainer>
+            <CloneTitle text={'Available Courses'} />
+        </AvailableCoursesContainer>
+        <PopularCoursesContainer>
+            <PopularCoursesTitle>Popular Courses</PopularCoursesTitle>
+            <CoursesList>
+                {data.allCoursesYaml.edges.map(course => (
+                    <CourseBox
+                        thumbnail={BgImg}
+                        author={course.node.instructor.email}
+                        title={course.node.title}
+                        price={'Free'}
+                        students={course.node.students}
+                    />
+                ))}
+            </CoursesList>
+        </PopularCoursesContainer>
+    </>
+);
 
-export default Courses;
+export default props => (
+    <StaticQuery
+        query={graphql`
+            query {
+                allCoursesYaml {
+                    edges {
+                        node {
+                            id
+                            title
+                            students
+                            instructor {
+                                id
+                                email
+                            }
+                        }
+                    }
+                }
+            }
+        `}
+        render={data => <Courses data={data} {...props} />}
+    />
+);

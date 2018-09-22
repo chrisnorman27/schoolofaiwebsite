@@ -5,6 +5,9 @@ module.exports = {
         description: 'A starter blog demonstrating what Gatsby can do.',
         siteUrl: 'https://gatsbyjs.github.io/gatsby-starter-blog/'
     },
+    mapping: {
+        'CoursesYaml.instructor': `InstructorYaml`
+    },
     pathPrefix: '/gatsby-starter-blog',
     plugins: [
         {
@@ -43,6 +46,13 @@ module.exports = {
             resolve: `gatsby-plugin-google-analytics`,
             options: {
                 //trackingId: `ADD YOUR TRACKING ID HERE`,
+            }
+        },
+        `gatsby-transformer-yaml`,
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `./src/data/`
             }
         },
         `gatsby-plugin-feed`,
