@@ -12,6 +12,20 @@ const FullHeightBackground = styled.div`
     align-items: center;
     flex-wrap: wrap;
     background-position: center center;
+    position: relative;
+    z-index: -2;
+
+    &::before {
+        background: linear-gradient(to right, #6020d2 0, #2e67f5 100%);
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.46;
+        z-index: -1;
+    }
 `;
 
 const Header = styled.h1`

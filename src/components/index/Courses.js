@@ -5,6 +5,7 @@ import CloneTitle from './CloneTitle';
 import CourseBox from './CourseBox';
 import BgImg from '../../assets/Siraj-background-image.png';
 import { StaticQuery, graphql } from 'gatsby';
+import get from 'lodash/get';
 
 const AvailableCoursesContainer = styled.div`
     height: 373px;
@@ -35,27 +36,30 @@ const CoursesList = styled.div`
     flex-direction: row;
 `;
 
-const Courses = ({ data }) => (
-    <>
-        <AvailableCoursesContainer>
-            <CloneTitle text={'Available Courses'} />
-        </AvailableCoursesContainer>
-        <PopularCoursesContainer>
-            <PopularCoursesTitle>Popular Courses</PopularCoursesTitle>
-            <CoursesList>
-                {data.allCoursesYaml.edges.map(course => (
-                    <CourseBox
-                        thumbnail={BgImg}
-                        author={course.node.instructor.email}
-                        title={course.node.title}
-                        price={'Free'}
-                        students={course.node.students}
-                    />
-                ))}
-            </CoursesList>
-        </PopularCoursesContainer>
-    </>
-);
+const Courses = ({ data }) => {
+    const courses = get(data, 'allCoursesYaml.edges');
+    return (
+        <>
+            <AvailableCoursesContainer>
+                <CloneTitle text={'Available Courses'} />
+            </AvailableCoursesContainer>
+            <PopularCoursesContainer>
+                <PopularCoursesTitle>Popular Courses</PopularCoursesTitle>
+                <CoursesList>
+                    {courses.map(course => (
+                        <CourseBox
+                            thumbnail={BgImg}
+                            author={course.node.instructor.email}
+                            title={course.node.title}
+                            price={'Free'}
+                            students={course.node.students}
+                        />
+                    ))}
+                </CoursesList>
+            </PopularCoursesContainer>
+        </>
+    );
+};
 
 export default props => (
     <StaticQuery

@@ -7,9 +7,12 @@ import TopImage from '../components/index/TopImage';
 import AboutUs from '../components/index/AboutUs';
 import FindYourLocal from '../components/index/FindYourLocal';
 import Courses from '../components/index/Courses';
+import Instructors from '../components/index/Instructors';
 
 import Layout from '../components/layout';
 import { rhythm } from '../utils/typography';
+import GetNewsletter from '../components/index/GetNewsLetter';
+import Footer from '../components/index/Footer';
 
 class BlogIndex extends React.Component {
     render() {
@@ -31,32 +34,9 @@ class BlogIndex extends React.Component {
                 <AboutUs />
                 <FindYourLocal />
                 <Courses />
-                {posts.map(({ node }) => {
-                    const title =
-                        get(node, 'frontmatter.title') || node.fields.slug;
-                    return (
-                        <div key={node.fields.slug}>
-                            <h3
-                                style={{
-                                    marginBottom: rhythm(1 / 4)
-                                }}
-                            >
-                                <Link
-                                    style={{ boxShadow: 'none' }}
-                                    to={node.fields.slug}
-                                >
-                                    {title}
-                                </Link>
-                            </h3>
-                            <small>{node.frontmatter.date}</small>
-                            <p
-                                dangerouslySetInnerHTML={{
-                                    __html: node.excerpt
-                                }}
-                            />
-                        </div>
-                    );
-                })}
+                <Instructors />
+                <GetNewsletter />
+                <Footer />
             </Layout>
         );
     }
