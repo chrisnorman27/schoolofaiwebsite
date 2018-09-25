@@ -52,6 +52,7 @@ const Submit = styled.input`
     box-shadow: none;
     border: 1px solid #2575fc;
     transition: all 0.3s;
+    cursor: pointer;
 
     &:hover {
         opacity: 0.9;

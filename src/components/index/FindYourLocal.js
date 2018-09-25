@@ -24,6 +24,7 @@ const CtaContainer = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-gap: 50px;
+    cursor: pointer;
 `;
 
 const ContactButton = styled.button`
@@ -34,6 +35,7 @@ const ContactButton = styled.button`
     margin-top: 30px;
     line-height: 40px;
     color: #2575fc;
+    cursor: pointer;
 `;
 
 class FindYourLocal extends React.Component {

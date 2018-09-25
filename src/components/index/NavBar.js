@@ -38,6 +38,7 @@ const MenuItem = styled.li`
     font-weight: 600;
     text-transform: uppercase;
     position: relative;
+    cursor: pointer;
 `;
 
 const Login = styled.button`
@@ -53,6 +54,7 @@ const Login = styled.button`
     display: inline-block;
     float: left;
     margin-left: 50px;
+    cursor: pointer;
 `;
 
 const navlinks = ['Home', 'Courses', 'School of AI Map', 'Contact'];
@@ -63,11 +65,11 @@ class NavBar extends React.Component {
         this.state = { slide: 0, lastScrollY: 0 };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
     }
 
-    componentWillUnmount() {
+    componentDidUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     }
 
@@ -92,6 +94,7 @@ class NavBar extends React.Component {
             >
                 <Logo>
                     <img
+                        style={{ cursor: 'pointer' }}
                         src={
                             displayBackground ? WhiteBrainIcon : BlackBrainIcon
                         }

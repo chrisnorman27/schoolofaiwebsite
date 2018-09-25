@@ -24,12 +24,14 @@ const Title = styled.h3`
     text-transform: uppercase;
     margin-bottom: 17px;
     line-height: 40px;
+    cursor: pointer;
 `;
 
 const ContentRow = styled.div`
     color: #808080;
     line-height: 30px;
     font-size: 16px;
+    cursor: pointer;
 `;
 
 const Bottom = styled.div`
@@ -43,6 +45,7 @@ const MenuItem = styled.li`
     line-height: 38px;
     padding-right: 38px;
     color: #808080;
+    cursor: pointer;
 `;
 
 const CopyrightContent = styled.div`

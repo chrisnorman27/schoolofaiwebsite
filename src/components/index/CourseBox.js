@@ -11,7 +11,9 @@ const Wrapper = styled.div`
     margin: 0 15px 40px;
 `;
 
-const Item = styled.div``;
+const Item = styled.div`
+    cursor: pointer;
+`;
 
 const Thumbnail = styled.div`
     margin: 0;

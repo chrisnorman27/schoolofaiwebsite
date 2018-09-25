@@ -36,6 +36,7 @@ const Name = styled.div`
 
 const Avatar = styled.img`
     border-radius: 50%;
+    cursor: pointer;
 `;
 
 const Instructors = () => (
