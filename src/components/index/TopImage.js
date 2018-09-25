@@ -5,6 +5,7 @@ import BgImage from '../../assets/Siraj-background-image.png';
 const FullHeightBackground = styled.div`
     height: 100vh;
     width: 100%;
+    padding-left: 50px;
     background-image: ${props => `url(${props.img})`};
     background-size: cover;
     color: white;

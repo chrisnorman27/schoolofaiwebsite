@@ -8,6 +8,7 @@ import AboutUs from '../components/index/AboutUs';
 import FindYourLocal from '../components/index/FindYourLocal';
 import Courses from '../components/index/Courses';
 import Instructors from '../components/index/Instructors';
+import NavBar from '../components/index/NavBar';
 
 import Layout from '../components/layout';
 import { rhythm } from '../utils/typography';
@@ -24,12 +25,13 @@ class BlogIndex extends React.Component {
         const posts = get(this, 'props.data.allMarkdownRemark.edges');
 
         return (
-            <Layout location={this.props.location}>
+            <>
                 <Helmet
                     htmlAttributes={{ lang: 'en' }}
                     meta={[{ name: 'description', content: siteDescription }]}
                     title={siteTitle}
                 />
+                <NavBar />
                 <TopImage />
                 <AboutUs />
                 <FindYourLocal />
@@ -37,7 +39,7 @@ class BlogIndex extends React.Component {
                 <Instructors />
                 <GetNewsletter />
                 <Footer />
-            </Layout>
+            </>
         );
     }
 }
