@@ -14,18 +14,30 @@ const Wrapper = styled.div`
 `;
 
 const Text = styled.div`
-    padding: 150px 110px 0px 60px;
-    flex: 1;
+    padding: 150px 80px 0px 20px;
+    flex: 0.7;
 `;
 
 const CtaContainer = styled.div`
     flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 50px;
+    display: flex;
+    justify-content: space-between;
     cursor: pointer;
 `;
+
+const CtaCol = styled.div`
+    flex: 1;
+    > div {
+        height: 400px;
+        margin: 30px 15px;
+    }
+`;
+
+const CtaLeft = styled(CtaCol)`
+    margin-top: 30px;
+`;
+
+const CtaRight = styled(CtaCol)``;
 
 const ContactButton = styled.button`
     display: inline-block;
@@ -36,6 +48,12 @@ const ContactButton = styled.button`
     line-height: 40px;
     color: #2575fc;
     cursor: pointer;
+    transition: all 0.2s ease-in-out 0s;
+
+    &:hover {
+        background: #2575fc;
+        color: white;
+    }
 `;
 
 class FindYourLocal extends React.Component {
@@ -54,6 +72,7 @@ class FindYourLocal extends React.Component {
                                 online and offline communities worldwide.
                             </strong>
                             <br />
+                            <br />
                             They are responsible for helping inspire and educate
                             developers to build Artificial Intelligence in their
                             local communities. Deans are guardians of our core
@@ -64,22 +83,27 @@ class FindYourLocal extends React.Component {
                         <ContactButton>Contact</ContactButton>
                     </Text>
                     <CtaContainer>
-                        <CtaBox icon={icon2} title={'Find a Local Chapter'}>
-                            Find your nearest local School of AI to connect with
-                            like-minded wizards.
-                        </CtaBox>
-                        <CtaBox icon={icon4} title={'Learn More'}>
-                            Contact us for more information about The School of
-                            AI
-                        </CtaBox>
-                        <CtaBox icon={icon3} title={'Donate'}>
-                            Contact us to find out how you can Donate to The
-                            School of AI.
-                        </CtaBox>
-                        <CtaBox icon={icon1} title={'Become a Dean'}>
-                            Want to become a School of AI Dean for your city?
-                            Fill out this form, and let's get started.
-                        </CtaBox>
+                        <CtaLeft>
+                            <CtaBox icon={icon2} title={'Find a Local Chapter'}>
+                                Find your nearest local School of AI to connect
+                                with like-minded wizards.
+                            </CtaBox>
+                            <CtaBox icon={icon3} title={'Donate'}>
+                                Contact us to find out how you can Donate to The
+                                School of AI.
+                            </CtaBox>
+                        </CtaLeft>
+                        <CtaRight>
+                            <CtaBox icon={icon4} title={'Learn More'}>
+                                Contact us for more information about The School
+                                of AI
+                            </CtaBox>
+
+                            <CtaBox icon={icon1} title={'Become a Dean'}>
+                                Want to become a School of AI Dean for your
+                                city? Fill out this form, and let's get started.
+                            </CtaBox>
+                        </CtaRight>
                     </CtaContainer>
                 </Wrapper>
             </>

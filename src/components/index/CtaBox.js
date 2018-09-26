@@ -6,13 +6,12 @@ const Wrapper = styled.div`
     border: 1px solid #eee;
     padding: 35px 25px;
     box-shadow: 6px 4px 18px rgba(0, 0, 0, 0.08);
-    -webkit-transition: all 0.2s ease-in-out 0s;
-    -khtml-transition: all 0.2s ease-in-out 0s;
-    -moz-transition: all 0.2s ease-in-out 0s;
-    -ms-transition: all 0.2s ease-in-out 0s;
-    -o-transition: all 0.2s ease-in-out 0s;
     transition: all 0.2s ease-in-out 0s;
     text-align: center;
+
+    &:hover {
+        box-shadow: none;
+    }
 `;
 
 const Icon = styled.img`
@@ -20,6 +19,8 @@ const Icon = styled.img`
     background-image: url(${bg_icon});
     padding: 10px;
     background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center center;
 `;
 

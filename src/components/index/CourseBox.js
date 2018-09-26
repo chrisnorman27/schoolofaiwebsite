@@ -9,6 +9,11 @@ const Wrapper = styled.div`
     padding-top: 0 !important;
     transition: all 0.5s ease-in-out;
     margin: 0 15px 40px;
+    box-shadow: none;
+
+    &:hover {
+        box-shadow: 6px 4px 18px rgba(0, 0, 0, 0.08);
+    }
 `;
 
 const Item = styled.div`
