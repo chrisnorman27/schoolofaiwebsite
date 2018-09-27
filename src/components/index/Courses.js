@@ -41,6 +41,7 @@ const Courses = ({ data }) => {
                 <CoursesList>
                     {courses.map(course => (
                         <CourseBox
+                            key={course.node.title}
                             thumbnail={BgImg}
                             author={course.node.instructor.email}
                             title={course.node.title}

@@ -77,10 +77,10 @@ const Footer = () => (
     <Wrapper>
         <Top>
             {FooterContents.map(group => (
-                <Group>
+                <Group key={group.title}>
                     <Title>{group.title}</Title>
-                    {group.items.map(item => (
-                        <ContentRow>{item}</ContentRow>
+                    {group.items.map((item, i) => (
+                        <ContentRow key={item}>{item}</ContentRow>
                     ))}
                 </Group>
             ))}

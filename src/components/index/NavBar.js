@@ -69,7 +69,7 @@ class NavBar extends React.Component {
         window.addEventListener('scroll', this.handleScroll);
     }
 
-    componentDidUnmount() {
+    componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     }
 
@@ -102,7 +102,7 @@ class NavBar extends React.Component {
                 </Logo>
                 <Nav>
                     {navlinks.map(name => (
-                        <MenuItem>{name}</MenuItem>
+                        <MenuItem key={name}>{name}</MenuItem>
                     ))}
                     <Login>Login</Login>
                 </Nav>
