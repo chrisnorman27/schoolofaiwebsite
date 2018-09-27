@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import MultiplePerson from '../icons/MultiplePerson';
 
 const Wrapper = styled.div`
     height: 356px;
@@ -7,22 +8,34 @@ const Wrapper = styled.div`
     padding: 0;
     float: left;
     padding-top: 0 !important;
-    transition: all 0.5s ease-in-out;
     margin: 0 15px 40px;
-    box-shadow: none;
+    background: white;
+`;
+
+const Item = styled.div`
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
 
     &:hover {
         box-shadow: 6px 4px 18px rgba(0, 0, 0, 0.08);
     }
 `;
 
-const Item = styled.div`
-    cursor: pointer;
-`;
-
 const Thumbnail = styled.div`
     margin: 0;
     overflow: hidden;
+`;
+
+const ThumbImg = styled.img`
+    margin: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 `;
 
 const Content = styled.div`
@@ -37,7 +50,7 @@ const Content = styled.div`
 const Author = styled.div`
     font-size: 14px;
     font-weight: 400;
-    margin-top: 7px;
+    padding-top: 7px;
     color: #2575fc;
     padding-left: 20px;
 `;
@@ -64,6 +77,7 @@ const Metadata = styled.div`
     position: relative;
     display: block;
     margin: 0;
+    background: white;
 `;
 
 const Price = styled.div`
@@ -97,7 +111,8 @@ const Students = styled.div`
     padding: 0;
     border: 0;
     line-height: 30px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     float: right;
     margin-right: 0;
     font-size: 14px;
@@ -108,19 +123,17 @@ const CourseBox = props => (
     <Wrapper>
         <Item>
             <Thumbnail>
-                <img
-                    style={{ margin: '0', width: '100%', height: 'auto' }}
-                    src={props.thumbnail}
-                    width={400}
-                    height={300}
-                />
+                <ThumbImg src={props.thumbnail} width={400} height={300} />
             </Thumbnail>
             <Content>
                 <Author>{props.author}</Author>
                 <Title>{props.title}</Title>
                 <Metadata>
                     <Price>{props.price}</Price>
-                    <Students>{props.students}</Students>
+                    <Students>
+                        <MultiplePerson style={{ marginRight: '5px' }} />
+                        {props.students}
+                    </Students>
                 </Metadata>
             </Content>
         </Item>
