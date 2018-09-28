@@ -15,7 +15,9 @@ const Container = styled.div`
     background: ${props => (props.noBackground ? 'none' : 'white')};
     color: ${props => (props.noBackground ? 'white' : '#333')};
     align-items: center;
-    transition: transform 0.5s ease-in-out, all 0.5s;
+    justify-content: space-between;
+    padding: 0 200px;
+    transition: all 0.2s, background 0.3s, transform 0.5s ease-in-out;
     transform: ${props => `translate(0, ${props.slide})`};
 `;
 
@@ -26,7 +28,6 @@ const Logo = styled.a`
 const Nav = styled.nav`
     display: flex;
     align-items: center;
-    margin-left: 250px;
 `;
 
 const MenuItem = styled.li`
@@ -94,7 +95,7 @@ class NavBar extends React.Component {
             >
                 <Logo>
                     <img
-                        style={{ cursor: 'pointer' }}
+                        style={{ cursor: 'pointer', marginBottom: '0' }}
                         src={
                             displayBackground ? WhiteBrainIcon : BlackBrainIcon
                         }
