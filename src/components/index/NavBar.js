@@ -59,7 +59,6 @@ const Login = styled.button`
     line-height: 20px;
     display: inline-block;
     float: left;
-    margin-left: 50px;
     cursor: pointer;
 `;
 
@@ -117,67 +116,91 @@ class NavBar extends React.Component {
             this.state.lastScrollY === 0 && !this.state.showingMobileMenu;
         const slideAble = !this.state.showingMobileMenu && this.state.slide;
         return (
-            <Container slide={slideAble} noBackground={displayBackground}>
-                <Logo>
-                    <img
-                        style={{ cursor: 'pointer', marginBottom: '0' }}
-                        src={
-                            displayBackground ? WhiteBrainIcon : BlackBrainIcon
-                        }
-                    />
-                </Logo>
-                <MediaQuery minDeviceWidth={1024}>
-                    {matches => {
-                        if (matches) {
-                            return (
+            <MediaQuery minDeviceWidth={1024}>
+                {matches => {
+                    if (matches) {
+                        return (
+                            <Container
+                                slide={slideAble}
+                                noBackground={displayBackground}
+                            >
+                                <Logo>
+                                    <img
+                                        style={{
+                                            cursor: 'pointer',
+                                            marginBottom: '0'
+                                        }}
+                                        src={
+                                            displayBackground
+                                                ? WhiteBrainIcon
+                                                : BlackBrainIcon
+                                        }
+                                    />
+                                </Logo>
+
                                 <Nav>
                                     {navlinks.map(name => (
                                         <MenuItem key={name}>{name}</MenuItem>
                                     ))}
-                                    <Login>Login</Login>
-                                </Nav>
-                            );
-                        } else {
-                            return (
-                                <>
-                                    <div style={{ zIndex: '10000' }}>
-                                        <HamburgerMenu
-                                            isOpen={
-                                                this.state.showingMobileMenu
-                                            }
-                                            menuClicked={
-                                                this.handleExpandHamburger
-                                            }
-                                            width={18}
-                                            height={15}
-                                            strokeWidth={2}
-                                            rotate={0}
-                                            color={
-                                                displayBackground
-                                                    ? 'white'
-                                                    : 'black'
-                                            }
-                                            borderRadius={0}
-                                            animationDuration={0.5}
-                                        />
+                                    <div style={{ marginLeft: '50px' }}>
+                                        <Login>Login</Login>
                                     </div>
-                                    {this.state.showingMobileMenu ? (
-                                        <FullScreenMenu
-                                            show={this.state.showingMobileMenu}
-                                        >
-                                            {navlinks.map(name => (
-                                                <MenuItem key={name}>
-                                                    {name}
-                                                </MenuItem>
-                                            ))}
-                                        </FullScreenMenu>
-                                    ) : null}
-                                </>
-                            );
-                        }
-                    }}
-                </MediaQuery>
-            </Container>
+                                </Nav>
+                            </Container>
+                        );
+                    } else {
+                        return (
+                            <Container
+                                slide={slideAble}
+                                noBackground={displayBackground}
+                            >
+                                <Logo>
+                                    <img
+                                        style={{
+                                            cursor: 'pointer',
+                                            marginBottom: '0'
+                                        }}
+                                        src={
+                                            displayBackground
+                                                ? WhiteBrainIcon
+                                                : BlackBrainIcon
+                                        }
+                                    />
+                                </Logo>
+                                <div style={{ zIndex: '10000' }}>
+                                    <HamburgerMenu
+                                        isOpen={this.state.showingMobileMenu}
+                                        menuClicked={this.handleExpandHamburger}
+                                        width={18}
+                                        height={15}
+                                        strokeWidth={2}
+                                        color={
+                                            displayBackground
+                                                ? 'white'
+                                                : 'black'
+                                        }
+                                        animationDuration={0.5}
+                                    />
+                                </div>
+                                {this.state.showingMobileMenu ? (
+                                    <FullScreenMenu
+                                        show={this.state.showingMobileMenu}
+                                    >
+                                        {navlinks.map(name => (
+                                            <MenuItem key={name}>
+                                                {name}
+                                            </MenuItem>
+                                        ))}
+                                        <div style={{ marginTop: '20px' }}>
+                                            <Login>Login</Login>
+                                        </div>
+                                    </FullScreenMenu>
+                                ) : null}
+                            </Container>
+                        );
+                    }
+                }}
+            </MediaQuery>
         );
     }
 }

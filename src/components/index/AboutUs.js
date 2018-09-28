@@ -8,18 +8,28 @@ import StatsBox from './StatsBox';
 
 const Wrapper = styled.div`
     height: 1176px;
-    padding: 180px 10px 260px 10px;
+    padding: 10px 10px 260px 10px;
     background-image: ${props => `url(${props.img})`};
     background-position-x: left;
     background-position-y: 85px;
     background-repeat: no-repeat;
     background-size: auto;
     display: flex;
+    flex-direction: column;
+
+    @media (min-width: 700px) {
+        flex-direction: row;
+        padding-top: 180px;
+    }
 `;
 
 const Text = styled.div`
-    padding-left: 60px;
+    padding: 0 10px;
     flex: 1;
+
+    @media (min-width: 700px) {
+        padding: 0 0 0 60px;
+    }
 `;
 
 const StatsContainer = styled.div`

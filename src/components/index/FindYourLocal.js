@@ -8,14 +8,24 @@ import icon3 from '../../assets/icon3.png';
 import icon4 from '../../assets/icon4.png';
 
 const Wrapper = styled.div`
-    height: 1021px;
-    padding: 15px 10px 200px 10px;
+    min-height: 1021px;
+    padding: 15px 10px;
     display: flex;
+    flex-direction: column;
+
+    @media (min-width: 700px) {
+        flex-direction: row;
+        padding: 15px 10px 200px 10px;
+    }
 `;
 
 const Text = styled.div`
-    padding: 150px 80px 0px 20px;
     flex: 0.7;
+    padding-top: 150px;
+
+    @media (min-width: 700px) {
+        padding: 150px 80px 0px 20px;
+    }
 `;
 
 const CtaContainer = styled.div`
@@ -28,7 +38,7 @@ const CtaContainer = styled.div`
 const CtaCol = styled.div`
     flex: 1;
     > div {
-        height: 400px;
+        min-height: 400px;
         margin: 30px 15px;
     }
 `;

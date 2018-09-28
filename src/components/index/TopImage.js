@@ -5,16 +5,21 @@ import BgImage from '../../assets/Siraj-background-image.png';
 const FullHeightBackground = styled.div`
     height: 100vh;
     width: 100%;
-    padding-left: 50px;
     background-image: ${props => `url(${props.img})`};
     background-size: cover;
     color: white;
     display: flex;
     align-items: center;
+    align-content: center;
     flex-wrap: wrap;
     background-position: center center;
     position: relative;
     z-index: -2;
+
+    @media (min-width: 700px) {
+        padding-left: 50px;
+        justify-content: normal;
+    }
 
     &::before {
         background: linear-gradient(to right, #6020d2 0, #2e67f5 100%);
@@ -29,20 +34,36 @@ const FullHeightBackground = styled.div`
     }
 `;
 
+const Contents = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 700px) {
+        display: block;
+    }
+`;
+
 const Header = styled.h1`
     font-weight: 300;
-    font-size: 40px;
-    width: 50%;
+    font-size: 30px;
     color: white;
+    text-align: center;
+
+    @media (min-width: 700px) {
+        width: 50%;
+        font-size: 40px;
+        text-align: left;
+    }
 `;
 
 const Button = styled.button`
     z-index: 7;
-    min-width: 222px;
-    max-width: 222px;
+    min-width: 150px;
+    max-width: 150px;
     white-space: nowrap;
     font-size: 13px;
-    line-height: 50px;
+    line-height: 40px;
     font-weight: 700;
     color: rgb(51, 51, 51);
     text-transform: uppercase;
@@ -66,19 +87,25 @@ const Button = styled.button`
     transform-origin: 50% 50% 0px;
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     border-width: 0px;
+
+    @media (min-width: 700px) {
+        min-width: 222px;
+        max-width: 222px;
+        line-height: 50px;
+    }
 `;
 
 class TopImage extends React.Component {
     render() {
         return (
             <FullHeightBackground img={BgImage}>
-                <div>
+                <Contents>
                     <Header>
                         Our mission is to offer a world-class AI education to
                         anyone on Earth for free.
                     </Header>
                     <Button>Sign Up Here</Button>
-                </div>
+                </Contents>
             </FullHeightBackground>
         );
     }

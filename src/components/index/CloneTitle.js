@@ -19,7 +19,7 @@ const Title = styled.h3`
 `;
 
 const TitleCloned = styled.div`
-    font-size: 70px;
+    font-size: 50px;
     line-height: 70px;
     font-weight: 700;
     width: 100%;

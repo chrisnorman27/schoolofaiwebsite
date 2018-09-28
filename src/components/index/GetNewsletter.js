@@ -23,20 +23,29 @@ const Title = styled.h2`
 
 const Form = styled.form`
     margin-top: 35px;
+
+    @media (max-width: 356px) {
+        // fix for very small screens
+        margin-left: 30px;
+    }
 `;
 
 const Email = styled.input`
     background-color: transparent;
-    width: 375px;
     max-width: 100%;
+    width: 200px;
     color: #fff;
     font-weight: 300;
     border: none;
     position: relative;
-    z-index: 1;
     font-size: 18px;
+    z-index: 1;
     border-bottom: 1px solid #eee;
     margin-right: 30px;
+
+    @media (min-width: 700px) {
+        width: 375px;
+    }
 `;
 
 const Submit = styled.input`
@@ -56,6 +65,11 @@ const Submit = styled.input`
 
     &:hover {
         opacity: 0.9;
+    }
+
+    @media (max-width: 356px) {
+        // fix for very small screens
+        margin-top: 20px;
     }
 `;
 

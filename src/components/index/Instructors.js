@@ -13,11 +13,12 @@ const Wrapper = styled.div`
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
+    padding-top: 30px;
 `;
 
 const CenterTitle = styled.div`
-    margin: auto;
     width: 100%;
+    text-align: center;
 `;
 
 const InstructorGroup = styled.div`

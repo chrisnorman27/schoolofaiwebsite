@@ -8,7 +8,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import get from 'lodash/get';
 
 const AvailableCoursesContainer = styled.div`
-    height: 807px;
+    min-height: 807px;
     padding: 95px 0 120px 15px;
     background: url(${Shape2});
     background-position-x: right;
@@ -28,7 +28,11 @@ const PopularCoursesTitle = styled.h3`
 
 const CoursesList = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
+    @media (min-width: 700px) {
+        flex-direction: row;
+    }
 `;
 
 const Courses = ({ data }) => {

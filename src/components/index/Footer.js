@@ -9,6 +9,11 @@ const Wrapper = styled.div`
 const Top = styled.div`
     display: flex;
     padding-bottom: 70px;
+    flex-direction: column;
+
+    @media (min-width: 700px) {
+        flex-direction: row;
+    }
 `;
 
 const Group = styled.div`
@@ -25,6 +30,11 @@ const Title = styled.h3`
     margin-bottom: 17px;
     line-height: 40px;
     cursor: pointer;
+    margin-top: 20px;
+
+    @media (min-width: 700px) {
+        margin-top: 0;
+    }
 `;
 
 const ContentRow = styled.div`
