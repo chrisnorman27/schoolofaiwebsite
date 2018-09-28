@@ -25,7 +25,7 @@ class BlogIndex extends React.Component {
         const posts = get(this, 'props.data.allMarkdownRemark.edges');
 
         return (
-            <>
+            <div style={{ overflowX: 'hidden' }}>
                 <Helmet
                     htmlAttributes={{ lang: 'en' }}
                     meta={[{ name: 'description', content: siteDescription }]}
@@ -39,7 +39,7 @@ class BlogIndex extends React.Component {
                 <Instructors />
                 <GetNewsletter />
                 <Footer />
-            </>
+            </div>
         );
     }
 }

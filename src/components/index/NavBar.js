@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import HamburgerMenu from 'react-hamburger-menu';
+import MediaQuery from 'react-responsive';
 import BlackBrainIcon from '../../assets/Black_Brain_Icon.png';
 import WhiteBrainIcon from '../../assets/White_Brain_Icon.png';
 
 const Container = styled.div`
     height: 120px;
     width: 100%;
-    padding: 25px 15px 5px;
+    padding: 25px 50px 5px;
     display: flex;
     position: fixed;
     top: 0px;
@@ -16,9 +18,12 @@ const Container = styled.div`
     color: ${props => (props.noBackground ? 'white' : '#333')};
     align-items: center;
     justify-content: space-between;
-    padding: 0 200px;
     transition: all 0.2s, background 0.3s, transform 0.5s ease-in-out;
     transform: ${props => `translate(0, ${props.slide})`};
+
+    @media (min-width: 700px) {
+        padding: 25px 200px 5px;
+    }
 `;
 
 const Logo = styled.a`
@@ -35,7 +40,7 @@ const MenuItem = styled.li`
     padding: 0px 20px;
     margin-bottom: 0px;
     transition: all 0.3s ease-in-out;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
     position: relative;
@@ -58,12 +63,28 @@ const Login = styled.button`
     cursor: pointer;
 `;
 
+const FullScreenMenu = styled.div`
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
+
 const navlinks = ['Home', 'Courses', 'School of AI Map', 'Contact'];
 
 class NavBar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { slide: 0, lastScrollY: 0 };
+        this.state = { slide: 0, lastScrollY: 0, showingMobileMenu: false };
     }
 
     componentDidMount() {
@@ -73,6 +94,11 @@ class NavBar extends React.Component {
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     }
+
+    handleExpandHamburger = () => {
+        console.log('clicked hambug');
+        this.setState({ showingMobileMenu: !this.state.showingMobileMenu });
+    };
 
     handleScroll = () => {
         const { lastScrollY } = this.state;
@@ -87,12 +113,11 @@ class NavBar extends React.Component {
     };
 
     render() {
-        const displayBackground = this.state.lastScrollY === 0;
+        const displayBackground =
+            this.state.lastScrollY === 0 && !this.state.showingMobileMenu;
+        const slideAble = !this.state.showingMobileMenu && this.state.slide;
         return (
-            <Container
-                slide={this.state.slide}
-                noBackground={displayBackground}
-            >
+            <Container slide={slideAble} noBackground={displayBackground}>
                 <Logo>
                     <img
                         style={{ cursor: 'pointer', marginBottom: '0' }}
@@ -101,12 +126,57 @@ class NavBar extends React.Component {
                         }
                     />
                 </Logo>
-                <Nav>
-                    {navlinks.map(name => (
-                        <MenuItem key={name}>{name}</MenuItem>
-                    ))}
-                    <Login>Login</Login>
-                </Nav>
+                <MediaQuery minDeviceWidth={1024}>
+                    {matches => {
+                        if (matches) {
+                            return (
+                                <Nav>
+                                    {navlinks.map(name => (
+                                        <MenuItem key={name}>{name}</MenuItem>
+                                    ))}
+                                    <Login>Login</Login>
+                                </Nav>
+                            );
+                        } else {
+                            return (
+                                <>
+                                    <div style={{ zIndex: '10000' }}>
+                                        <HamburgerMenu
+                                            isOpen={
+                                                this.state.showingMobileMenu
+                                            }
+                                            menuClicked={
+                                                this.handleExpandHamburger
+                                            }
+                                            width={18}
+                                            height={15}
+                                            strokeWidth={2}
+                                            rotate={0}
+                                            color={
+                                                displayBackground
+                                                    ? 'white'
+                                                    : 'black'
+                                            }
+                                            borderRadius={0}
+                                            animationDuration={0.5}
+                                        />
+                                    </div>
+                                    {this.state.showingMobileMenu ? (
+                                        <FullScreenMenu
+                                            show={this.state.showingMobileMenu}
+                                        >
+                                            {navlinks.map(name => (
+                                                <MenuItem key={name}>
+                                                    {name}
+                                                </MenuItem>
+                                            ))}
+                                        </FullScreenMenu>
+                                    ) : null}
+                                </>
+                            );
+                        }
+                    }}
+                </MediaQuery>
             </Container>
         );
     }
