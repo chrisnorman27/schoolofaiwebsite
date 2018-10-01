@@ -1,18 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import BgImage from '../../assets/Siraj-background-image.png';
+import { StaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
 const FullHeightBackground = styled.div`
     height: 100vh;
     width: 100%;
-    background-image: ${props => `url(${props.img})`};
-    background-size: cover;
     color: white;
     display: flex;
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
-    background-position: center center;
     position: relative;
     z-index: -2;
 
@@ -98,7 +96,18 @@ const Button = styled.button`
 class TopImage extends React.Component {
     render() {
         return (
-            <FullHeightBackground img={BgImage}>
+            <FullHeightBackground>
+                <Img
+                    style={{
+                        position: 'absolute',
+                        left: 0,
+                        top: 0,
+                        width: '100%',
+                        height: '100%',
+                        zIndex: '-2'
+                    }}
+                    fluid={this.props.data.backgroundImg.childImageSharp.fluid}
+                />
                 <Contents>
                     <Header>
                         Our mission is to offer a world-class AI education to
@@ -111,4 +120,23 @@ class TopImage extends React.Component {
     }
 }
 
-export default TopImage;
+export default props => (
+    <StaticQuery
+        query={graphql`
+            query {
+                backgroundImg: file(
+                    relativePath: { regex: "/Siraj-background-image.png/" }
+                ) {
+                    childImageSharp {
+                        fluid(maxWidth: 1920) {
+                            ...GatsbyImageSharpFluid_withWebp
+                        }
+                    }
+                }
+            }
+        `}
+        render={data => <TopImage data={data} {...props} />}
+    />
+);
+
+// export default TopImage;
