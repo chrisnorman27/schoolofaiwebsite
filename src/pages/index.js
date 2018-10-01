@@ -8,12 +8,10 @@ import AboutUs from '../components/index/AboutUs';
 import FindYourLocal from '../components/index/FindYourLocal';
 import Courses from '../components/index/Courses';
 import Instructors from '../components/index/Instructors';
-import NavBar from '../components/index/NavBar';
+import NavBar from '../components/common/NavBar';
 
-import Layout from '../components/layout';
-import { rhythm } from '../utils/typography';
 import GetNewsletter from '../components/index/GetNewsLetter';
-import Footer from '../components/index/Footer';
+import Footer from '../components/common/Footer';
 
 class BlogIndex extends React.Component {
     render() {
