@@ -8,8 +8,21 @@ module.exports = {
     mapping: {
         'CoursesYaml.instructor': `InstructorYaml`
     },
-    pathPrefix: '/gatsby-starter-blog',
     plugins: [
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `${__dirname}/src/data`,
+                name: 'data'
+            }
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                path: `${__dirname}/src/assets`,
+                name: 'assets'
+            }
+        },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -55,15 +68,14 @@ module.exports = {
                 path: `./src/data/`
             }
         },
-        `gatsby-plugin-feed`,
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: `Gatsby Starter Blog`,
-                short_name: `GatsbyJS`,
+                name: `School of AI`,
+                short_name: `School of AI`,
                 start_url: `/`,
                 background_color: `#ffffff`,
-                theme_color: `#663399`,
+                theme_color: `#0356e7`,
                 display: `minimal-ui`,
                 icon: `src/assets/gatsby-icon.png`
             }
