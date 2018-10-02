@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import CloneTitle from './CloneTitle';
 import Shape1 from '../../assets/Shape1.png';
 import AboutUs1 from '../../assets/aboutus-1.jpg';
@@ -38,14 +40,42 @@ const StatsContainer = styled.div`
     grid-template-rows: 1fr 1fr;
 `;
 
+const ImgWrapper = styled.div`
+    flex: 1;
+    padding-top: 100px;
+    padding-left: 50px;
+`;
+
+const ImgTop = styled(Img)`
+    position: absolute;
+    left: 50px;
+    z-index: 2;
+    max-width: 500px;
+`;
+
+const ImgBottom = styled(Img)`
+    position: absolute;
+    top: -100px;
+    left: 130px;
+    max-width: 500px;
+`;
+
 class AboutUs extends React.Component {
     render() {
         return (
             <Wrapper img={Shape1}>
-                <div style={{ flex: '1' }}>
-                    <img src={AboutUs2} />
-                    <img src={AboutUs1} />
-                </div>
+                <ImgWrapper>
+                    <ImgTop
+                        fluid={
+                            this.props.data.aboutUsImg2.childImageSharp.fluid
+                        }
+                    />
+                    <ImgBottom
+                        fluid={
+                            this.props.data.aboutUsImg1.childImageSharp.fluid
+                        }
+                    />
+                </ImgWrapper>
                 <Text>
                     <CloneTitle text={'About Us'} />
                     <p>
@@ -75,4 +105,26 @@ class AboutUs extends React.Component {
     }
 }
 
-export default AboutUs;
+export default props => (
+    <StaticQuery
+        query={graphql`
+            query {
+                aboutUsImg1: file(relativePath: { regex: "/aboutus-1.jpg/" }) {
+                    childImageSharp {
+                        fluid(maxWidth: 800) {
+                            ...GatsbyImageSharpFluid_withWebp
+                        }
+                    }
+                }
+                aboutUsImg2: file(relativePath: { regex: "/aboutus-2.jpg/" }) {
+                    childImageSharp {
+                        fluid(maxWidth: 800) {
+                            ...GatsbyImageSharpFluid_withWebp
+                        }
+                    }
+                }
+            }
+        `}
+        render={data => <AboutUs data={data} {...props} />}
+    />
+);

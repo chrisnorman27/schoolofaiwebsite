@@ -38,7 +38,7 @@ const Contents = styled.div`
 
 const CtaBox = props => (
     <Wrapper>
-        <Icon src={props.icon} />
+        <Icon src={props.icon} alt={'Info box icon'} />
         <Title>{props.title}</Title>
         <Contents>{props.children}</Contents>
     </Wrapper>

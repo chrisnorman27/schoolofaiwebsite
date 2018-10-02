@@ -1,13 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import BgImg from '../../assets/getnewsletterbg.jpg';
+import { StaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
 const Wrapper = styled.div`
+    position: relative;
     height: 666px;
-    background: url(${BgImg});
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,15 +71,43 @@ const Submit = styled.input`
     }
 `;
 
-const GetNewsletter = () => (
+const GetNewsletter = ({ data }) => (
     <Wrapper>
+        <Img
+            style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                width: '100%',
+                height: '100%',
+                zIndex: '-2'
+            }}
+            fluid={data.backgroundImg.childImageSharp.fluid}
+        />
         <Title>Get Newsletter</Title>
         <Form>
-            {/* <label>Email address</label> */}
+            <label style={{ display: 'none' }}>Email Address</label>
             <Email type={'email'} placeholder={'Email address'} />
             <Submit type={'submit'} value={'Get It Now'} />
         </Form>
     </Wrapper>
 );
 
-export default GetNewsletter;
+export default props => (
+    <StaticQuery
+        query={graphql`
+            query {
+                backgroundImg: file(
+                    relativePath: { regex: "/getnewsletterbg.jpg/" }
+                ) {
+                    childImageSharp {
+                        fluid(maxWidth: 1920) {
+                            ...GatsbyImageSharpFluid_withWebp
+                        }
+                    }
+                }
+            }
+        `}
+        render={data => <GetNewsletter data={data} {...props} />}
+    />
+);

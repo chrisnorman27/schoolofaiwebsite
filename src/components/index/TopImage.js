@@ -138,5 +138,3 @@ export default props => (
         render={data => <TopImage data={data} {...props} />}
     />
 );
-
-// export default TopImage;

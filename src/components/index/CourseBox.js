@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MultiplePerson from '../icons/MultiplePerson';
+import Img from 'gatsby-image';
 
 const Wrapper = styled.div`
     height: 356px;
@@ -26,7 +27,7 @@ const Thumbnail = styled.div`
     overflow: hidden;
 `;
 
-const ThumbImg = styled.img`
+const ThumbImg = styled(Img)`
     margin: 0;
     width: 100%;
     height: auto;
@@ -123,7 +124,7 @@ const CourseBox = props => (
     <Wrapper>
         <Item>
             <Thumbnail>
-                <ThumbImg src={props.thumbnail} width={400} height={300} />
+                <ThumbImg fluid={props.thumbnail} />
             </Thumbnail>
             <Content>
                 <Author>{props.author}</Author>

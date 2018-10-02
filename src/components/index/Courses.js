@@ -37,6 +37,7 @@ const CoursesList = styled.div`
 
 const Courses = ({ data }) => {
     const courses = get(data, 'allCoursesYaml.edges');
+    const thumbnail = get(data, 'backgroundImg.childImageSharp.fluid');
     return (
         <>
             <AvailableCoursesContainer>
@@ -46,7 +47,7 @@ const Courses = ({ data }) => {
                     {courses.map(course => (
                         <CourseBox
                             key={course.node.title}
-                            thumbnail={BgImg}
+                            thumbnail={thumbnail}
                             author={course.node.instructor.email}
                             title={course.node.title}
                             price={'Free'}
@@ -73,6 +74,15 @@ export default props => (
                                 id
                                 email
                             }
+                        }
+                    }
+                }
+                backgroundImg: file(
+                    relativePath: { regex: "/Siraj-background-image.png/" }
+                ) {
+                    childImageSharp {
+                        fluid(maxWidth: 340) {
+                            ...GatsbyImageSharpFluid_withWebp
                         }
                     }
                 }

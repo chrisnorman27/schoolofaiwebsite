@@ -135,6 +135,7 @@ class NavBar extends React.Component {
                                                 ? WhiteBrainIcon
                                                 : BlackBrainIcon
                                         }
+                                        alt={'School of AI logo'}
                                     />
                                 </Logo>
 
@@ -165,6 +166,7 @@ class NavBar extends React.Component {
                                                 ? WhiteBrainIcon
                                                 : BlackBrainIcon
                                         }
+                                        alt={'School of AI logo'}
                                     />
                                 </Logo>
                                 <div style={{ zIndex: '10000' }}>
