@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import MouseScrollDown from '../common/MouseScrollDown';
 
 const FullHeightBackground = styled.div`
     height: 100vh;
@@ -15,7 +16,7 @@ const FullHeightBackground = styled.div`
     z-index: -2;
 
     @media (min-width: 700px) {
-        padding-left: 50px;
+        padding-left: 120px;
         justify-content: normal;
     }
 
@@ -93,6 +94,14 @@ const Button = styled.button`
     }
 `;
 
+const ScrollIcon = styled.div`
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    width: 18px;
+    margin-left: -9px;
+`;
+
 class TopImage extends React.Component {
     render() {
         return (
@@ -115,6 +124,9 @@ class TopImage extends React.Component {
                     </Header>
                     <Button>Sign Up Here</Button>
                 </Contents>
+                <ScrollIcon>
+                    <MouseScrollDown />
+                </ScrollIcon>
             </FullHeightBackground>
         );
     }
