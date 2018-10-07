@@ -1,9 +1,8 @@
-# gatsby-starter-blog
-Gatsby starter for creating a blog
+# School of AI website
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
+An exercise in learning GatsbyJS by rewriting a Wordpress-managed site.
 
-`gatsby new gatsby-blog https://github.com/gatsbyjs/gatsby-starter-blog`
+Original website: [theschool.ai](https://theschool.ai)
 
 ## Running in development
 `gatsby develop`
