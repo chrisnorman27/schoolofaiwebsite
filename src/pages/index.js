@@ -10,7 +10,7 @@ import Courses from '../components/index/Courses';
 import Instructors from '../components/index/Instructors';
 import NavBar from '../components/common/NavBar';
 
-import GetNewsletter from '../components/index/GetNewsLetter';
+import GetNewsletter from '../components/index/GetNewsletter';
 import Footer from '../components/common/Footer';
 
 class BlogIndex extends React.Component {
