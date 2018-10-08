@@ -22,7 +22,7 @@ class BlogIndex extends React.Component {
         );
 
         return (
-            <div style={{ overflowX: 'hidden' }}>
+            <>
                 <Helmet
                     htmlAttributes={{ lang: 'en' }}
                     meta={[{ name: 'description', content: siteDescription }]}
@@ -36,7 +36,7 @@ class BlogIndex extends React.Component {
                 <Instructors />
                 <GetNewsletter />
                 <Footer />
-            </div>
+            </>
         );
     }
 }
