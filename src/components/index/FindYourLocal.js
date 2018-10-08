@@ -33,6 +33,11 @@ const CtaContainer = styled.div`
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    flex-direction: column;
+
+    @media (min-width: 700px) {
+        flex-direction: row;
+    }
 `;
 
 const CtaCol = styled.div`
