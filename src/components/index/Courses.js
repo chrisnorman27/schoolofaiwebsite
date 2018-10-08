@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Shape2 from '../../assets/Shape2.png';
 import CloneTitle from './CloneTitle';
 import CourseBox from './CourseBox';
-import BgImg from '../../assets/Siraj-background-image-400x300.png';
 import { StaticQuery, graphql } from 'gatsby';
 import get from 'lodash/get';
 
