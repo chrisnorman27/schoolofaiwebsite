@@ -4,8 +4,6 @@ import { StaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import CloneTitle from './CloneTitle';
 import Shape1 from '../../assets/Shape1.png';
-import AboutUs1 from '../../assets/aboutus-1.jpg';
-import AboutUs2 from '../../assets/aboutus-2.jpg';
 import StatsBox from './StatsBox';
 
 const Wrapper = styled.div`
@@ -42,22 +40,33 @@ const StatsContainer = styled.div`
 
 const ImgWrapper = styled.div`
     flex: 1;
-    padding-top: 100px;
-    padding-left: 50px;
+
+    @media (min-width: 700px) {
+        padding-left: 50px;
+        padding-top: 100px;
+    }
 `;
 
 const ImgTop = styled(Img)`
-    position: absolute;
-    left: 50px;
     z-index: 2;
     max-width: 500px;
+    margin-bottom: 20px;
+
+    @media (min-width: 700px) {
+        position: absolute;
+        left: 50px;
+        margin-bottom: 0;
+    }
 `;
 
 const ImgBottom = styled(Img)`
-    position: absolute;
-    top: -100px;
-    left: 130px;
     max-width: 500px;
+
+    @media (min-width: 700px) {
+        position: absolute;
+        top: -100px;
+        left: 130px;
+    }
 `;
 
 class AboutUs extends React.Component {
